@@ -1,0 +1,50 @@
+Question - Considering app engine and cloud run. If the application is required to be mult-regional
+which service would you recommend?. Explain why?
+
+Answer - When it comes to choosing between Google App Engine and Google Cloud Run for a multiregional application, both services have their own advantages and considerations. However, in this scenario, I would recommend using Google Cloud Run.
+
+Google App Engine is a fully managed platform that allows developers to build and deploy applications without worrying about infrastructure management. It provides automatic scaling, load balancing, and other built-in features that simplify application deployment. However, App Engine is tied to specific regions, meaning you have to choose a specific region during deployment. While you can deploy to multiple regions, each region would be separate and managed independently, requiring separate deployments and potentially adding complexity.
+
+On the other hand, Google Cloud Run is a serverless compute platform that allows you to run stateless containers on demand. It provides the flexibility to deploy your application to multiple regions or even globally without having to manage the infrastructure. You can deploy your containers to multiple regions and leverage Google's global load balancing to distribute traffic efficiently. This allows your application to be highly available and reduces latency by serving requests from the nearest region to the user.
+
+The key advantage of Google Cloud Run in a multiregional context is its flexibility and scalability. You can deploy your application to any region and scale it based on demand, ensuring that your application is available and responsive to users across different geographical locations. Cloud Run's ability to scale to zero also helps in reducing costs during periods of low traffic.
+
+Additionally, Google Cloud Run supports both HTTP and event-driven workloads, providing versatility for different types of applications. It also integrates well with other Google Cloud services and has a strong ecosystem of tools and libraries that can enhance your development experience.
+
+In summary, Google Cloud Run is recommended for a multiregional application because it provides flexibility, scalability, and global load balancing. It allows you to deploy your application to multiple regions, ensuring high availability and low latency for users across the globe while managing the infrastructure for you.
+
+
+
+
+Question- What is the recommended most secure way to connect to CloudSQL?
+
+Answer - The recommended and most secure way to connect to Cloud SQL, Google Cloud's managed relational database service, is to use the Cloud SQL Proxy. The Cloud SQL Proxy provides a secure and encrypted connection between your local machine or application and the Cloud SQL instance.
+
+
+Question - What are some challenges working with a Shared VPC?
+
+Answer - Working with a Shared Virtual Private Cloud (VPC) can introduce certain challenges due to the nature of sharing network resources among multiple projects or teams. Here are some common challenges associated with working in a Shared VPC environment:
+
+Network Complexity: As multiple projects or teams share the same network infrastructure, the network configuration can become complex. It requires careful planning and coordination to ensure that the network is properly segmented and isolated to prevent unauthorized access or interference between different entities.
+
+Security Concerns: Sharing a VPC raises security concerns as different projects or teams may have different security requirements, access controls, or compliance standards. Ensuring proper security controls, such as fine-grained network policies, access controls, and monitoring, becomes crucial to maintain data privacy and prevent unauthorized access.
+
+Resource Allocation and Management: Resource allocation and management can become challenging in a Shared VPC environment. You need to carefully allocate and monitor resource usage to ensure fair sharing and prevent one project from dominating or monopolizing the resources. This includes managing IP address ranges, subnets, and firewall rules effectively.
+
+Change Management: Shared VPCs require effective change management processes to avoid disruptions to other projects or teams. Any changes to the network configuration, firewall rules, or routing tables must be carefully planned, communicated, and tested to minimize the risk of impacting other entities sharing the VPC.
+
+Communication and Collaboration: Effective communication and collaboration between different projects or teams become critical when working in a Shared VPC. It is important to establish clear channels of communication, documentations, and guidelines to ensure smooth cooperation and resolve any conflicts or issues that may arise.
+
+Performance and Scalability: Sharing network resources can impact performance and scalability. If one project or team experiences a sudden surge in traffic or resource demand, it may affect the performance of other entities sharing the same VPC. Ensuring proper monitoring, resource scaling, and load balancing mechanisms can help mitigate such issues.
+
+Dependency Management: Shared VPCs often have interdependencies between different projects or teams. Changes made by one entity may inadvertently impact the functionality or stability of other projects. Careful coordination and testing are required to manage these dependencies effectively.
+
+
+Question - What GCP service would you use to provide WAF for a public endpoint?
+Answer - To provide Web Application Firewall (WAF) protection for a public endpoint in Google Cloud Platform (GCP), you would use the Cloud Armor service. Cloud Armor is a managed security service that allows you to defend your applications and services against web-based attacks, including Distributed Denial-of-Service (DDoS) attacks and application-layer attacks.
+
+Cloud Armor integrates with other GCP services, such as Google Cloud Load Balancing, to protect your applications and services deployed behind a load balancer. It uses various techniques, such as IP-based allowlisting/blocklisting, Geo-based access controls, and Layer 7 filtering rules, to filter and block malicious traffic before it reaches your applications.
+
+With Cloud Armor, you can create custom security policies to define the rules and conditions for allowing or blocking traffic based on various parameters like IP addresses, HTTP headers, request methods, and more. These policies are highly configurable and can be adjusted to suit your specific application's security requirements.
+
+In summary, Cloud Armor is the recommended GCP service for providing WAF protection for a public endpoint.

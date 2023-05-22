@@ -1,0 +1,14 @@
+In the code above, we have to customize the following parts:
+
+<path_to_service_account_key_json>: Replace this with the path to your service account key JSON file.
+<your_project_id>: Replace this with your GCP project ID.
+<your_project_region>: Replace this with the region where you want to create the Pub/Sub topics.
+var.topic_count: This variable specifies the number of topics you want to create. The default value is set to 10,000.
+Save the above code to a file with a .tf extension, e.g., pubsub_topics.tf.
+
+To deploy the configuration, follow these steps:
+
+Open a terminal or command prompt and navigate to the directory containing the .tf file.
+Run terraform init to initialize the Terraform configuration.
+Run terraform plan to preview the changes that Terraform will make.
+If the plan looks correct, run terraform apply to create the Pub/Sub topics.

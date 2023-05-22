@@ -1,0 +1,68 @@
+1. Create a Python Flask application:
+   Create a new Python file, app.py.
+   Installed the required dependencies using pip install flask.
+   Implement a basic Flask application that returns some data for HTTP requests
+
+2. Containerize the application:
+   Create a Dockerfile in the same directory as app.py with the following content:
+   Create a requirements.txt file containing the Flask dependency (flask).
+
+3. Build and push the Docker image:
+   Build the Docker image by running docker build -t simplepythonapp . in the same directory as the Dockerfile.
+   docker tag simplepythonapp:latest username/simplepythonapp:latest
+   docker login
+   docker push username/simplepythonapp:latest
+
+4.  Prepare Kubernetes manifests:
+    Create a directory to hold the Kubernetes manifests, e.g., kubernetes.
+    Create a file named deployment.yaml inside the kubernetes directory and define a Deployment manifest:
+    Create a file named service.yaml inside the kubernetes directory to define a Service manifest:
+
+5.  Organize manifests using Kustomize:
+    Create a file named kustomization.yaml in the kubernetes directory:
+
+6. Deploy the application using kubectl:
+   Apply the manifests to the Kubernetes cluster:
+   This will create the Deployment and Service for the application.
+
+7. Add persistence to your application:
+   Depending on our requirements, we can choose a persistence mechanism, such as a database or a distributed file system.
+   Update your application code to connect to the persistence layer as needed.
+ 
+
+8. Add SSL certificate for secure HTTPS access:
+   Create a dummy SSL certificate file, e.g., dummy_certificate.pem.
+   Update your application code to use the certificate for HTTPS access.
+   
+9.Ensure availability and automatic restarts:
+  Kubernetes provides built-in features for availability and automatic restarts.
+  Set appropriate readiness and liveness probes in the Deployment manifest to define how Kubernetes checks the health of the application.
+  For example, we can add the following to the spec section of the Deployment manifest:
+
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      ...
+      containers:
+        - ...
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+10. Deploy the application into a service mesh:
+    To deploy the application into a service mesh, such as Istio or Linkerd, we need to install and configure the service mesh on your Kubernetes cluster.
+    Follow the documentation of our chosen service mesh for instructions on how to deploy applications into it.
+    Once the service mesh is installed and configured, we can apply the existing Kubernetes manifests, and the service mesh will handle the traffic routing and observability for our
+    application.
